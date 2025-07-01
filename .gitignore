@@ -1,0 +1,10 @@
+dist/
+node_modules/
+package-lock.json
+.vscode/
+.idea/
+public/**
+!public/anime/example.mp4
+!public/image/example.png
+!public/anime/
+!public/image/
