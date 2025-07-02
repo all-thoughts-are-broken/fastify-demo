@@ -36,3 +36,12 @@ export const animeClipsQuerySchema = Type.Object({
 	// 相应的类型
 	response_type: Type.Optional(Type.String())
 })
+
+export const animeImagesResponseSchema = animeClipsResponseSchema
+
+export const animeImagesQuerySchema = Type.Intersect([
+	animeClipsQuerySchema,
+	Type.Object({
+		quality: Type.Optional(Type.Number())
+	})
+])

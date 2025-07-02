@@ -1,5 +1,6 @@
 import config from '@/config'
 import { FastifyRequest, FastifyReply, FastifyError } from 'fastify'
+import sharp from 'sharp'
 /**
  * 生成指定范围随机整数
  * @param min 最小数
@@ -12,6 +13,29 @@ export function generateRandomInteger(min: number, max: number): number {
 export function getStaticFileUrl(path: string): string {
 	const baseUrl = config.domain
 	return `${baseUrl}${path}`
+}
+
+/**
+ * 压缩图片
+ * @param image 图片Buffer
+ * @param quality 压缩质量
+ */
+async function processImage(image: Buffer, quality: number) {
+	try {
+		return await sharp(image)
+			.resize(800, null, {
+				withoutEnlargement: true
+			})
+			.jpeg({
+				quality: quality,
+				progressive: true,
+				force: false
+			})
+			.toBuffer()
+	} catch (error) {
+		console.error(error)
+		throw new Error('图片压缩失败')
+	}
 }
 
 export function errorHandler(

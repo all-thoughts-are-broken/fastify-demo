@@ -1,5 +1,5 @@
 import { Static } from '@sinclair/typebox'
-import { animeClipsQuerySchema } from '@/schemas'
+import { animeClipsQuerySchema, animeImagesQuerySchema } from '@/schemas'
 
 export interface AppConfig {
 	env: 'development' | 'production'
@@ -8,3 +8,4 @@ export interface AppConfig {
 }
 
 export type AnimeClipsQuery = Static<typeof animeClipsQuerySchema>
+export type AnimeImagesQuery = Static<typeof animeImagesQuerySchema>
