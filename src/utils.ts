@@ -20,7 +20,7 @@ export function getStaticFileUrl(path: string): string {
  * @param image 图片Buffer
  * @param quality 压缩质量
  */
-async function processImage(image: Buffer, quality: number) {
+export async function processImage(image: Buffer, quality: number) {
 	try {
 		return await sharp(image)
 			.resize(800, null, {
