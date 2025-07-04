@@ -32,7 +32,7 @@ export async function getImage(count: number, type: string, quality?: number) {
 	count = Math.max(1, Math.min(count, MAX_COUNT, animeImageFileList.length))
 	if (type === 'stream') {
 		const randomFile =
-			animeClipsFileList[generateRandomInteger(0, animeImageFileList.length - 1)]
+			animeImageFileList[generateRandomInteger(0, animeImageFileList.length - 1)]
 		return fs.createReadStream(path.join(animeImageFilePath, randomFile))
 	}
 	// 随机获取不重复的文件
